@@ -1,0 +1,33 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <table>
+        <tr>
+            <th>Course</th>
+            <th>Course Capacity</th>
+            <th>Course Projector</th>
+            <th>Teacher</th>
+            <th>Room</th>
+            <th>Room Capacity</th>
+            <th>Room Projector</th>
+            <th>Time</th>
+        </tr>
+        @foreach (var sol in Model.Suggestions)
+        {
+            <tr>
+                <td>@sol.Course.Group.Name</td>
+                <td>@sol.Course.required_capacity</td>
+                <td>@sol.Course.required_projector</td>
+                <td>@sol.Course.Teacher.Name</td>
+                <td>@sol.Room.Name</td>
+                <td>@sol.Room.capacity</td>
+                <td>@sol.Room.has_projector</td>
+                <td>@sol.Time.Day @sol.Time.Start - @(@sol.Time.Start+@sol.Time.Duration)</td>
+            </tr>
+        }
+    </table>
+</div>
